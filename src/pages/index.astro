@@ -1,53 +1,18 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import CardProjeto from '../components/CardProjeto.astro'; // Importamos o componente aqui!
+import Navbar from '../components/Navbar.astro';
+import Hero from '../components/Hero.astro';
+import Skills from '../components/Skills.astro';
+import Experience from '../components/Experience.astro';
+import Footer from '../components/Footer.astro';
 ---
 
-<Layout title="Meu Portfólio | Desenvolvedor">
-  <main class="max-w-3xl mx-auto px-6 py-20">
-    
-    <!-- Cabeçalho (Hero) -->
-    <header class="mb-16">
-      <h1 class="text-5xl font-extrabold text-gray-900 tracking-tight mb-4">
-        Olá, eu sou o <span class="text-blue-600">[Seu Nome]</span>.
-      </h1>
-      <p class="text-xl text-gray-600 leading-relaxed">
-        Sou um desenvolvedor apaixonado por resolver problemas reais. Construo aplicações modernas e hospedo meus próprios servidores na estante de casa.
-      </p>
-      
-      <div class="flex gap-4 mt-8">
-        <a href="#projetos" class="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
-          Ver meus projetos
-        </a>
-        <a href="https://github.com/SEU_USUARIO" target="_blank" class="bg-gray-100 text-gray-900 px-6 py-3 rounded-lg font-semibold hover:bg-gray-200 transition-colors">
-          Meu GitHub
-        </a>
-      </div>
-    </header>
-
-    <!-- Nova Seção: Projetos -->
-    <section id="projetos" class="mt-24 pt-8 border-t border-gray-200">
-      <h2 class="text-3xl font-bold text-gray-900 mb-8">Estudos de Caso</h2>
-      
-      <!-- Grid para colocar os cartões lado a lado no PC -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        
-        <CardProjeto 
-          titulo="Infraestrutura Caseira"
-          descricao="Hospedagem física deste portfólio usando um Raspberry Pi 3, Nginx e Cloudflare Tunnels para evitar CGNAT."
-          tags={['Linux', 'Nginx', 'Cloudflare']}
-          link="#"
-        />
-
-        <CardProjeto 
-          titulo="Automação de Tarefas"
-          descricao="Script em Python que reduziu em 80% o tempo de fechamento de planilhas semanais no meu trabalho anterior."
-          tags={['Python', 'Pandas', 'Automação']}
-          link="#"
-        />
-
-      </div>
-    </section>
-
+<Layout title="José Cláudio - Engenharia Eletrônica e Telecomunicações">
+  <Navbar />
+  <main class="flex-grow">
+    <Hero />
+    <Skills />
+    <Experience />
   </main>
+  <Footer />
 </Layout>

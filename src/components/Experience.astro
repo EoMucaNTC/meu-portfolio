@@ -1,0 +1,53 @@
+---
+const experiences = [
+  {
+    role: "Pesquisador IC (Bolsista CNPq)",
+    company: "Center for Advanced and Sustainable Technologies - FESJ",
+    period: "Set 2024 - Presente",
+    description: "Pesquisa em viabilidade econômica de plantas de reciclagem de baterias Íon-Lítio. Modelagem financeira e estudo de sensibilidade por meio de simulações de Monte Carlo (VPL, TIR, Payback)."
+  },
+  {
+    role: "Engenharia de Processos e Gestão",
+    company: "Spirit Robótica - UNESP SJBV",
+    period: "Jul 2023 - Presente",
+    description: "Projetos: Adirondack, BoneBreaker, Father e Robótica nas escolas. Gestão e liderança na equipe de robótica. Desenvolvimento de integração ESP32 para robôs de combate e elaboração de orçamentos (regras setor público/privado)."
+  },
+  {
+    role: "Professor Voluntário de Álgebra II",
+    company: "Cursinho Popular São Joanense",
+    period: "Mar 2023 - Jun 2025",
+    description: "Atuação em sala de aula ministrando aulas para alunos em preparação para o vestibular, focando em desenvolvimento didático e oratória."
+  },
+  {
+    role: "Supervisor Censitário",
+    company: "IBGE - Censo Demográfico 2021",
+    period: "Jun 2021 - Out 2022",
+    description: "Coordenação de equipes de recenseadores em campo. Garantia de qualidade, cumprimento de prazos, gerenciamento de conflitos e resolução de desafios operacionais (troubleshooting)."
+  }
+];
+---
+<section id="experiencia" class="py-20">
+  <div class="max-w-5xl mx-auto px-6">
+    <h2 class="text-3xl font-bold text-slate-900 mb-12">Experiência</h2>
+    
+    <div class="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-slate-300 before:to-transparent">
+      
+      {experiences.map((exp) => (
+        <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+          <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-slate-50 bg-blue-100 text-blue-600 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 16 16"><path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0Zm0 12a4 4 0 1 1 0-8 4 4 0 0 1 0 8Z"/></svg>
+          </div>
+          <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-6 rounded-2xl bg-white shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
+            <div class="flex flex-col mb-2">
+              <span class="text-blue-600 font-bold text-xs tracking-wider uppercase mb-1">{exp.period}</span>
+              <h3 class="text-xl font-bold text-slate-900 leading-snug">{exp.role}</h3>
+              <span class="text-slate-500 font-medium text-sm mt-1">{exp.company}</span>
+            </div>
+            <p class="text-slate-600 leading-relaxed mt-3 text-sm md:text-base">{exp.description}</p>
+          </div>
+        </div>
+      ))}
+
+    </div>
+  </div>
+</section>
