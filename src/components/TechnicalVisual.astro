@@ -1,83 +1,291 @@
 ---
+import FinancialVisual from "./FinancialVisual.astro";
 interface Props {
   kind: string;
 }
 const { kind } = Astro.props;
+const labels: Record<string, string> = {
+  spirit:
+    "Robô articulado em movimento, representando integração de eletrônica, controle e liderança de engenharia.",
+  adelphi:
+    "Aeromodelo com hélice girando e trajetória de voo, representando o Projeto Hórus.",
+  professor:
+    "Professor apontando para uma equação no quadro, representando as aulas de Álgebra II.",
+  ibge: "Mapa esquemático com rotas e pontos de coleta, representando coordenação de equipes de campo no Censo.",
+};
 ---
 
-<div class={`technical-visual visual-${kind}`} aria-hidden="true">
-  <div class="visual-grid"></div><svg
-    viewBox="0 0 600 400"
-    fill="none"
-    class="schematic"
-  >
-    {
-      kind === "spirit" ? (
-        <g stroke="currentColor">
-          <>
-            <path d="M170 150 300 80 430 150 430 260 300 330 170 260Z" />
-            <path d="m170 150 130 75 130-75M300 225v105M230 116l130 74v108M370 116l-130 74v108" />
-            <path class="trace" d="M70 200h100m260 0h100M300 25v55m0 250v45" />
-            <circle cx="300" cy="225" r="40" />
-            <circle cx="300" cy="225" r="9" fill="currentColor" />
-          </>
-        </g>
-      ) : kind === "cnpq" ? (
-        <g stroke="currentColor">
-          <path d="M80 60v280h450" />
-          {Array.from({ length: 9 }, (_, i) => (
-            <path
-              class="trace"
-              d={`M80 310 Q ${190 + i * 8} ${300 - i * 22} 290 ${200 - i * 12} T530 ${80 + i * 17}`}
-              opacity={0.25 + i * 0.07}
-            />
-          ))}
-          <path d="M410 55h70v135h-70zM430 45h30" />
-          <path d="m450 78-18 36h28l-18 36" />
-        </g>
-      ) : kind === "adelphi" ? (
-        <g stroke="currentColor">
-          <>
-            <path d="m300 55 22 125 210 83v22l-208-42-7 68 45 29v14l-62-16-62 16v-14l45-29-7-68-208 42v-22l210-83Z" />
-            <path
-              d="M300 55v283M90 220h420M170 95l260 240"
-              stroke-dasharray="4 8"
-              opacity=".35"
-            />
-            <circle cx="300" cy="215" r="115" stroke-dasharray="3 12" />
-          </>
-        </g>
-      ) : kind === "professor" ? (
-        <g stroke="currentColor">
-          <>
-            <path d="M90 95h180q30 0 30 25v220q0-30-30-30H90Zm420 0H330q-30 0-30 25v220q0-30 30-30h180Z" />
-            <path
-              class="trace"
-              d="M130 160h90m-90 40h100m130-40h110m-110 40h75M160 240l25-25 25 25m-25-25v60"
-            />
-          </>
-        </g>
-      ) : (
-        <g stroke="currentColor">
-          {Array.from({ length: 15 }, (_, i) => {
-            const x = 110 + (i % 5) * 95;
-            const y = 90 + Math.floor(i / 5) * 105;
-            return (
-              <g>
-                <path d={`M${x} ${y}h95m-95 0v105`} opacity=".3" />
+{
+  kind === "cnpq" ? (
+    <FinancialVisual />
+  ) : (
+    <div
+      class={`technical-visual visual-${kind}`}
+      role="img"
+      aria-label={labels[kind] || "Ilustração conceitual de engenharia"}
+    >
+      <div class="visual-grid" aria-hidden="true" />
+      <>
+        <svg
+          viewBox="0 0 600 400"
+          fill="none"
+          class="schematic scene-illustration"
+          aria-hidden="true"
+        >
+          {kind === "spirit" ? (
+            <g
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <ellipse
+                cx="300"
+                cy="340"
+                rx="145"
+                ry="15"
+                fill="currentColor"
+                opacity=".07"
+                stroke="none"
+              />
+              <path d="M80 320h440M80 325v-10m440 10v-10" opacity=".2" />
+              <g class="robot-body">
+                <path d="M300 83V60" />
                 <circle
-                  cx={x}
-                  cy={y}
-                  r={i % 3 === 0 ? 15 : 7}
+                  cx="300"
+                  cy="53"
+                  r="7"
                   fill="currentColor"
-                  fill-opacity=".2"
+                  class="robot-beacon"
+                />
+                <rect
+                  x="238"
+                  y="84"
+                  width="124"
+                  height="84"
+                  rx="22"
+                  fill="#1d3023"
+                />
+                <rect
+                  x="251"
+                  y="105"
+                  width="98"
+                  height="37"
+                  rx="12"
+                  fill="#101b15"
+                />
+                <circle cx="273" cy="122" r="6" fill="currentColor" />
+                <circle cx="327" cy="122" r="6" fill="currentColor" />
+                <path d="M287 153h26M278 169v15m44-15v15" />
+                <rect
+                  x="236"
+                  y="184"
+                  width="128"
+                  height="105"
+                  rx="18"
+                  fill="#1d3023"
+                />
+                <circle cx="300" cy="223" r="22" />
+                <path d="m285 223 10 10 21-23" />
+                <path d="M264 266h72" stroke-dasharray="5 7" />
+                <g class="robot-arm-left">
+                  <circle cx="222" cy="205" r="12" />
+                  <path d="M212 216 181 247l16 30" stroke-width="13" />
+                  <circle cx="181" cy="247" r="10" fill="#18201b" />
+                  <path d="m192 278-8 15m15-14 10 11" />
+                </g>
+                <g class="robot-arm-right">
+                  <circle cx="378" cy="205" r="12" />
+                  <path d="m389 210 34-27 10-44" stroke-width="13" />
+                  <circle cx="423" cy="183" r="10" fill="#18201b" />
+                  <path d="m433 139-12-15m14 12 15-11" />
+                </g>
+                <path d="M267 291v24m66-24v24" stroke-width="14" />
+                <rect
+                  x="242"
+                  y="316"
+                  width="53"
+                  height="18"
+                  rx="8"
+                  fill="#233627"
+                />
+                <rect
+                  x="308"
+                  y="316"
+                  width="53"
+                  height="18"
+                  rx="8"
+                  fill="#233627"
                 />
               </g>
-            );
-          })}
-          <path class="trace" d="m110 300 95-105 95 0 95-105 95 105" />
-        </g>
-      )
-    }
-  </svg><span class="visual-caption">ESTUDO VISUAL / {kind.toUpperCase()}</span>
-</div>
+              <g
+                opacity=".6"
+                font-size="11"
+                font-family="monospace"
+                fill="currentColor"
+                stroke="none"
+              >
+                <text x="60" y="100">
+                  CONTROLE
+                </text>
+                <text x="444" y="276">
+                  ATUADORES
+                </text>
+              </g>
+              <path d="M60 112h70l45 40m266 109h70" opacity=".35" />
+            </g>
+          ) : kind === "adelphi" ? (
+            <g
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                class="flight-route"
+                d="M50 300C90 200 155 320 228 232S420 100 550 200"
+                stroke-dasharray="5 10"
+                opacity=".4"
+              />
+              <circle
+                cx="300"
+                cy="205"
+                r="137"
+                stroke-dasharray="2 13"
+                opacity=".25"
+              />
+              <g class="airplane-flight">
+                <path
+                  d="m300 74 17 109 172 68v20l-171-29-6 67 48 29v12l-60-13-60 13v-12l48-29-6-67-171 29v-20l172-68Z"
+                  fill="#243b3d"
+                />
+                <path
+                  d="M300 100v215M142 253l141-47m175 47-141-47"
+                  opacity=".5"
+                />
+                <ellipse cx="300" cy="174" rx="10" ry="24" fill="#102628" />
+                <g class="plane-propeller">
+                  <path d="M256 74h88" stroke-width="5" />
+                  <circle cx="300" cy="74" r="5" fill="currentColor" />
+                </g>
+              </g>
+              <text
+                x="38"
+                y="63"
+                fill="currentColor"
+                stroke="none"
+                font-size="12"
+                font-family="monospace"
+              >
+                HÓRUS / AERODESIGN
+              </text>
+            </g>
+          ) : kind === "professor" ? (
+            <g
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <rect
+                x="208"
+                y="77"
+                width="322"
+                height="201"
+                rx="7"
+                fill="#292b20"
+              />
+              <path d="M220 263h298M250 278v49m240-49v49" />
+              <g fill="currentColor" stroke="none" font-family="monospace">
+                <text x="244" y="113" font-size="12">
+                  ÁLGEBRA II
+                </text>
+                <text x="264" y="165" font-size="25">
+                  Ax = b
+                </text>
+                <text x="265" y="204" font-size="18">
+                  ideias → compreensão
+                </text>
+              </g>
+              <path
+                class="chalk-line"
+                pathLength="1"
+                d="M264 177h115"
+                stroke-width="3"
+              />
+              <g class="teacher-body">
+                <circle cx="150" cy="129" r="27" fill="#3c3429" />
+                <path d="M124 119q18-37 49 0M146 142q8 6 15-1" />
+                <path
+                  d="M128 163q-20 13-20 46v47h87v-53q0-29-22-40Z"
+                  fill="#3c3429"
+                />
+                <path d="m137 166 13 17 13-17m-13 17v57" />
+                <path d="m129 257-9 71m52-71 10 71" stroke-width="15" />
+                <path d="M105 333h28m39 0h28" stroke-width="7" />
+                <path d="m106 184-18 39 29 23" stroke-width="12" />
+                <g class="teacher-arm">
+                  <path d="m188 185 32 21 39-37" stroke-width="12" />
+                  <path d="m259 169 31-32" stroke-width="3" />
+                </g>
+              </g>
+              <path d="M63 340h469" opacity=".25" />
+            </g>
+          ) : (
+            <g stroke="currentColor" stroke-width="2" stroke-linejoin="round">
+              <path
+                d="m74 114 145-42 155 39 148-44v240l-148 44-155-39-145 41Z"
+                fill="#263140"
+              />
+              <path d="M219 72v240m155-201v240" opacity=".65" />
+              <path
+                d="m83 173 129-33 165 35 136-41M85 275l125-40 160 40 144-32M142 103l9 226M291 93l-10 235M446 91l17 233"
+                opacity=".23"
+              />
+              <path
+                d="m98 305 66-53-12-43 106-56 73 59 81-17 60-64"
+                class="map-route"
+                stroke-width="3"
+                stroke-dasharray="6 8"
+              />
+              {[
+                { x: 164, y: 252 },
+                { x: 258, y: 153 },
+                { x: 331, y: 212 },
+                { x: 472, y: 131 },
+              ].map((p, i) => (
+                <g style={`--pin-delay: ${i * 0.6}s`}>
+                  <circle
+                    class="map-pulse"
+                    cx={p.x}
+                    cy={p.y}
+                    r="18"
+                    opacity=".2"
+                  />
+                  <path
+                    d={`M${p.x} ${p.y}c-6-8-17-18-17-28a17 17 0 0 1 34 0c0 10-11 20-17 28Z`}
+                    fill="#1a2431"
+                  />
+                  <circle cx={p.x} cy={p.y - 28} r="5" fill="currentColor" />
+                </g>
+              ))}
+              <text
+                x="82"
+                y="52"
+                fill="currentColor"
+                stroke="none"
+                font-family="monospace"
+                font-size="12"
+              >
+                CENSO / EQUIPES EM CAMPO
+              </text>
+            </g>
+          )}
+        </svg>
+        <span class="visual-caption">
+          ILUSTRAÇÃO CONCEITUAL / {kind.toUpperCase()}
+        </span>
+      </>
+    </div>
+  )
+}

@@ -111,7 +111,9 @@
     function sync() {
       cancelAnimationFrame(frame);
       frame = 0;
-      button!.textContent = paused ? "Ativar movimento" : "Pausar movimento";
+      document.documentElement.dataset.motionPaused = String(paused);
+      window.dispatchEvent(new Event("portfolio:motion"));
+      button!.textContent = paused ? "Ativar animações" : "Pausar animações";
       button!.setAttribute("aria-pressed", String(paused));
       draw();
       if (!paused && visible && !document.hidden) {

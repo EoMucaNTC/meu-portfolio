@@ -1,0 +1,127 @@
+---
+import { npv, irr, payback, example } from "../lib/finance";
+const { cashFlows, rate } = example;
+const net = npv(rate, cashFlows),
+  internal = irr(cashFlows)!,
+  recovery = payback(cashFlows)!;
+const number = (value: number, digits = 1) =>
+  value.toLocaleString("pt-BR", {
+    maximumFractionDigits: digits,
+    minimumFractionDigits: digits,
+  });
+const cumulative = cashFlows.map((_, i) =>
+  cashFlows.slice(0, i + 1).reduce((a, b) => a + b, 0),
+);
+const discounted = cashFlows.map((_, i) =>
+  npv(rate, cashFlows.slice(0, i + 1)),
+);
+const rates = Array.from({ length: 31 }, (_, i) => i / 100);
+const plots = [
+  {
+    title: "VPL",
+    value: `R$ ${number(net / 1000)} mil`,
+    subtitle: "Valor presente acumulado",
+    values: discounted,
+    min: -100000,
+    max: 60000,
+    start: "0",
+    end: "5 anos",
+    marker: 5,
+    markerValue: net,
+  },
+  {
+    title: "TIR",
+    value: `${number(internal * 100)}% a.a.`,
+    subtitle: "VPL × taxa de desconto",
+    values: rates.map((r) => npv(r, cashFlows)),
+    min: -40000,
+    max: 60000,
+    start: "0%",
+    end: "30%",
+    marker: internal * 100,
+    markerValue: 0,
+  },
+  {
+    title: "PAYBACK",
+    value: `${number(recovery, 2)} anos`,
+    subtitle: "Saldo acumulado simples",
+    values: cumulative,
+    min: -100000,
+    max: 60000,
+    start: "0",
+    end: "5 anos",
+    marker: recovery,
+    markerValue: 0,
+  },
+];
+---
+
+<figure class="technical-visual visual-cnpq financial-visual">
+  <div class="visual-grid" aria-hidden="true"></div>
+  <div class="finance-heading">
+    <span class="eyebrow">LAB / VIABILIDADE ECONÔMICA</span><span
+      class="simulation-badge">SIMULAÇÃO DIDÁTICA</span
+    >
+  </div>
+  <div class="financial-panels">
+    {
+      plots.map((plot) => {
+        const x = (index: number) =>
+          15 + (index / (plot.values.length - 1)) * 130;
+        const y = (value: number) =>
+          125 - ((value - plot.min) / (plot.max - plot.min)) * 100;
+        const path = plot.values
+          .map(
+            (value, i) =>
+              `${i ? "L" : "M"}${x(i).toFixed(2)} ${y(value).toFixed(2)}`,
+          )
+          .join(" ");
+        return (
+          <div class="finance-panel">
+            <>
+              <h4>{plot.title}</h4>
+              <strong>{plot.value}</strong>
+              <p>{plot.subtitle}</p>
+              <svg
+                viewBox="0 0 160 155"
+                role="img"
+                aria-label={`${plot.title}: ${plot.subtitle}. ${plot.value}. Cenário hipotético.`}
+              >
+                <text x="15" y="14">
+                  R$ mil
+                </text>
+                <path d="M15 20v110h130" class="chart-axis" />
+                <>
+                  <path d={`M15 ${y(0)}h130`} class="chart-zero" />
+                  <text x="12" y={y(0) - 5}>
+                    0
+                  </text>
+                </>
+                <path d={path} class="chart-line" pathLength="1" />
+                <circle
+                  class="chart-marker"
+                  cx={x(plot.marker)}
+                  cy={y(plot.markerValue)}
+                  r="4"
+                />
+                <>
+                  <text x="15" y="150">
+                    {plot.start}
+                  </text>
+                  <text x="145" y="150" text-anchor="end">
+                    {plot.end}
+                  </text>
+                </>
+              </svg>
+            </>
+          </div>
+        );
+      })
+    }
+  </div>
+  <figcaption>
+    Exemplo: investimento de R$ 100 mil; entradas anuais de R$ 32 mil por 5
+    anos; taxa de desconto de 10% a.a. Payback simples, com interpolação.
+    Valores hipotéticos, não são resultados da pesquisa.
+  </figcaption>
+</figure>
