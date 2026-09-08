@@ -1,32 +1,38 @@
 ---
-import '../styles/global.css';
-
+import "../styles/global.css";
+import "../styles/portfolio.css";
 interface Props {
   title: string;
   description?: string;
 }
-
-const { title, description = "Portfólio de José Cláudio - Engenharia Eletrônica e Telecomunicações" } = Astro.props;
+const {
+  title,
+  description = "José Cláudio: Engenharia Eletrônica e de Telecomunicações na UNESP. Projetos, pesquisa, robótica e sistemas embarcados.",
+} = Astro.props;
 ---
 
 <!doctype html>
-<html lang="pt-BR" class="scroll-smooth">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="description" content={description} />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
-  </head>
-  <body class="bg-slate-50 text-slate-900 font-['Inter'] antialiased min-h-screen flex flex-col">
-    <slot />
-  </body>
+<html lang="pt-BR">
+  <head
+    ><meta charset="utf-8" /><meta
+      name="viewport"
+      content="width=device-width, initial-scale=1"
+    /><meta name="description" content={description} /><meta
+      name="theme-color"
+      content="#101412"
+    /><meta property="og:title" content={title} /><meta
+      property="og:description"
+      content={description}
+    /><meta property="og:type" content="website" /><link
+      rel="icon"
+      type="image/svg+xml"
+      href="/favicon.svg"
+    /><title>{title}</title></head
+  ><body
+    ><a class="skip-link" href="#conteudo">Pular para o conteúdo</a><slot
+    /></body
+  >
 </html>
-
-<style is:global>
-  /* Adicione estilos globais aqui se necessário no futuro */
-</style>
+<script>
+  import "../scripts/motion";
+</script>

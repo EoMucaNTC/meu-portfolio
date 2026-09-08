@@ -1,46 +1,29 @@
-# Astro Starter Kit: Basics
+# Portfólio — José Cláudio
 
-```sh
-npm create astro@latest -- --template basics
-```
+Site estático em Astro e Tailwind. Os projetos em destaque são recortes das experiências existentes.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Desenvolvimento
 
-## 🚀 Project Structure
+- Node.js conforme engines em package.json; instalar com `npm ci`.
+- `npm run dev -- --background`: iniciar servidor local.
+- `npm run astro -- dev stop`: encerrar servidor.
+- `npm run check`: verificar Astro e TypeScript.
+- `npm run lint`: verificar formatação (Prettier; não substitui análise de tipos).
+- `npm run format`: formatar fontes.
+- `npm run build`: gerar versão estática em dist/.
 
-Inside of your Astro project, you'll see the following folders and files:
+## Arquitetura visual
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
-```
+Componentes Astro renderizam todo o conteúdo no build. Canvas 2D projeta uma rede 3D com perspectiva, rotação e resposta ao ponteiro; não há WebGL nem framework de animação. As conexões são pré-calculadas. O desenho pausa fora da tela, em abas ocultas e por escolha do visitante. O limite de resolução é 1,75x (1,25x em ponteiros touch), com menos nós em dispositivos touch. Movimento reduzido usa composição estática e desativa parallax e transições.
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+SVGs conceituais representam robótica, reciclagem de baterias, aerodesign, educação e gestão de dados. Não representam fotografias, resultados medidos ou modelos reais. Fontes do sistema evitam downloads externos. Todo o conteúdo e navegação funcionam sem JavaScript.
 
-## 🧞 Commands
+## Conteúdo e imagens
 
-All commands are run from the root of the project, from a terminal:
+Experiências: src/components/Experience.astro. Projetos: Projects.astro. Habilidades: Skills.astro. Estilos: src/styles/portfolio.css. Adicionar fotos reais com os nomes de public/images/README.md e reconstruir o site. Fotos são incluídas somente quando existem, com carregamento tardio e proporções preservadas. Otimizar os arquivos antes de adicionar; os arquivos públicos não são recomprimidos automaticamente. Não há links GitHub ou demos disponíveis no conteúdo original.
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+## Publicação
 
-## 👀 Want to learn more?
+O adapter Vercel existente foi mantido. O build também gera dist/, que pode ser servido pelo Nginx no Raspberry Pi. Esta alteração não configura hospedagem nem publica o site.
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+TypeScript fica na série 6 por compatibilidade com astro check. O override de path-to-regexp mantém a série 6 corrigida usada pelo adapter Vercel.

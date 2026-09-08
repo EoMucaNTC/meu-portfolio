@@ -1,0 +1,83 @@
+---
+interface Props {
+  kind: string;
+}
+const { kind } = Astro.props;
+---
+
+<div class={`technical-visual visual-${kind}`} aria-hidden="true">
+  <div class="visual-grid"></div><svg
+    viewBox="0 0 600 400"
+    fill="none"
+    class="schematic"
+  >
+    {
+      kind === "spirit" ? (
+        <g stroke="currentColor">
+          <>
+            <path d="M170 150 300 80 430 150 430 260 300 330 170 260Z" />
+            <path d="m170 150 130 75 130-75M300 225v105M230 116l130 74v108M370 116l-130 74v108" />
+            <path class="trace" d="M70 200h100m260 0h100M300 25v55m0 250v45" />
+            <circle cx="300" cy="225" r="40" />
+            <circle cx="300" cy="225" r="9" fill="currentColor" />
+          </>
+        </g>
+      ) : kind === "cnpq" ? (
+        <g stroke="currentColor">
+          <path d="M80 60v280h450" />
+          {Array.from({ length: 9 }, (_, i) => (
+            <path
+              class="trace"
+              d={`M80 310 Q ${190 + i * 8} ${300 - i * 22} 290 ${200 - i * 12} T530 ${80 + i * 17}`}
+              opacity={0.25 + i * 0.07}
+            />
+          ))}
+          <path d="M410 55h70v135h-70zM430 45h30" />
+          <path d="m450 78-18 36h28l-18 36" />
+        </g>
+      ) : kind === "adelphi" ? (
+        <g stroke="currentColor">
+          <>
+            <path d="m300 55 22 125 210 83v22l-208-42-7 68 45 29v14l-62-16-62 16v-14l45-29-7-68-208 42v-22l210-83Z" />
+            <path
+              d="M300 55v283M90 220h420M170 95l260 240"
+              stroke-dasharray="4 8"
+              opacity=".35"
+            />
+            <circle cx="300" cy="215" r="115" stroke-dasharray="3 12" />
+          </>
+        </g>
+      ) : kind === "professor" ? (
+        <g stroke="currentColor">
+          <>
+            <path d="M90 95h180q30 0 30 25v220q0-30-30-30H90Zm420 0H330q-30 0-30 25v220q0-30 30-30h180Z" />
+            <path
+              class="trace"
+              d="M130 160h90m-90 40h100m130-40h110m-110 40h75M160 240l25-25 25 25m-25-25v60"
+            />
+          </>
+        </g>
+      ) : (
+        <g stroke="currentColor">
+          {Array.from({ length: 15 }, (_, i) => {
+            const x = 110 + (i % 5) * 95;
+            const y = 90 + Math.floor(i / 5) * 105;
+            return (
+              <g>
+                <path d={`M${x} ${y}h95m-95 0v105`} opacity=".3" />
+                <circle
+                  cx={x}
+                  cy={y}
+                  r={i % 3 === 0 ? 15 : 7}
+                  fill="currentColor"
+                  fill-opacity=".2"
+                />
+              </g>
+            );
+          })}
+          <path class="trace" d="m110 300 95-105 95 0 95-105 95 105" />
+        </g>
+      )
+    }
+  </svg><span class="visual-caption">ESTUDO VISUAL / {kind.toUpperCase()}</span>
+</div>

@@ -1,20 +1,22 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import ParticleNetwork from '../components/ParticleNetwork.astro';
-import Navbar from '../components/Navbar.astro';
-import Hero from '../components/Hero.astro';
-import Skills from '../components/Skills.astro';
-import Experience from '../components/Experience.astro';
-import Footer from '../components/Footer.astro';
+import Layout from "../layouts/Layout.astro";
+import About from "../components/About.astro";
+import Projects from "../components/Projects.astro";
+import Navbar from "../components/Navbar.astro";
+import Hero from "../components/Hero.astro";
+import Skills from "../components/Skills.astro";
+import Experience from "../components/Experience.astro";
+import Footer from "../components/Footer.astro";
 ---
 
 <Layout title="José Cláudio - Engenharia Eletrônica e Telecomunicações">
-  <ParticleNetwork />
   <Navbar />
-  <main class="flex-grow relative z-10">
+  <main id="conteudo">
     <Hero />
-    <Skills />
+    <About />
+    <Projects />
     <Experience />
+    <Skills />
   </main>
   <Footer />
 </Layout>

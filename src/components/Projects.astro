@@ -1,0 +1,80 @@
+---
+import TechnicalVisual from "./TechnicalVisual.astro";
+const projects = [
+  {
+    id: "adelphi",
+    title: "Projeto Hórus",
+    label: "01 / AERODESIGN",
+    description: "Projetos elétricos e eletrônicos para aeromodelos.",
+    role: "Eletrônica e sistemas embarcados",
+    tags: ["Controle eletrônico", "Sistemas embarcados"],
+  },
+  {
+    id: "cnpq",
+    title: "Energia em novos ciclos",
+    label: "02 / PESQUISA CNPq",
+    description:
+      "Viabilidade econômica de plantas de reciclagem de baterias Íon-Lítio.",
+    role: "Pesquisador de iniciação científica",
+    tags: ["Monte Carlo", "VPL / TIR", "Payback"],
+  },
+  {
+    id: "spirit",
+    title: "Da ideia ao robô",
+    label: "03 / SPIRIT ROBÓTICA",
+    description: "Planejamento e execução de projetos reais de robótica.",
+    role: "Vice-Capitão e Diretor de Engenharia",
+    tags: ["Robótica", "Gestão de engenharia"],
+  },
+];
+---
+
+<section id="projetos" class="projects shell section-space">
+  <div class="section-heading">
+    <div>
+      <p class="eyebrow">02 / PROJETOS EM FOCO</p><h2>
+        Conceitos que<br />ganham <em>forma.</em>
+      </h2>
+    </div><p class="muted">
+      Um recorte dos trabalhos<br />que compõem minha trajetória.
+    </p>
+  </div><div class="project-list">
+    {
+      projects.map((p) => (
+        <article class="project">
+          <>
+            <a
+              class="project-preview"
+              href={`#detail-${p.id}`}
+              aria-label={`Conhecer ${p.title}`}
+            >
+              <>
+                <TechnicalVisual kind={p.id} />
+                <span class="round-arrow">↗</span>
+              </>
+            </a>
+            <div class="project-copy">
+              <>
+                <p class="eyebrow">{p.label}</p>
+                <h3>{p.title}</h3>
+                <p>{p.description}</p>
+                <p class="project-role">Papel: {p.role}</p>
+                <ul class="tags">
+                  {p.tags.map((t) => (
+                    <li>{t}</li>
+                  ))}
+                </ul>
+                <a class="text-link" href={`#detail-${p.id}`}>
+                  Explorar experiência ↗
+                </a>
+              </>
+            </div>
+          </>
+        </article>
+      ))
+    }
+  </div><p class="asset-note">
+    Composições gráficas conceituais dos trabalhos; não são fotografias ou
+    resultados de simulações.
+  </p>
+</section>
