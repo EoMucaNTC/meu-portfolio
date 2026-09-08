@@ -10,3 +10,4 @@ Coloque aqui as imagens das suas experiências com os seguintes nomes:
 
 As imagens idealmente devem ter **proporção 16:9** (ex: 1280x720 px).
 Formatos aceitos: `.jpg`, `.png`, `.webp`
+
