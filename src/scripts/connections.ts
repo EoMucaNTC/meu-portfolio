@@ -22,12 +22,12 @@ if (canvas && context) {
         0,
         1 - Math.hypot(node.x - pointer.x, node.y - pointer.y) / 180,
       );
-      context.fillStyle = `rgba(196,238,140,${0.18 + proximity * 0.65})`;
+      context.fillStyle = `rgba(23,93,204,${0.18 + proximity * 0.65})`;
       context.beginPath();
       context.arc(node.x, node.y, 1.7 + proximity * 1.8, 0, Math.PI * 2);
       context.fill();
       if (proximity > 0) {
-        context.strokeStyle = `rgba(196,238,140,${proximity * 0.5})`;
+        context.strokeStyle = `rgba(23,93,204,${proximity * 0.5})`;
         context.beginPath();
         context.moveTo(node.x, node.y);
         context.lineTo(pointer.x, pointer.y);
@@ -44,7 +44,7 @@ if (canvas && context) {
           0,
           1 - Math.hypot(a.x - pointer.x, a.y - pointer.y) / 240,
         );
-        context.strokeStyle = `rgba(196,238,140,${(1 - distance / 150) * (0.08 + nearPointer * 0.42)})`;
+        context.strokeStyle = `rgba(23,93,204,${(1 - distance / 150) * (0.08 + nearPointer * 0.42)})`;
         context.beginPath();
         context.moveTo(a.x, a.y);
         context.lineTo(b.x, b.y);

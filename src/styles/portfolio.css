@@ -2,14 +2,14 @@
   --font-sans: "Segoe UI", Arial, sans-serif;
 }
 :root {
-  --bg: #101412;
-  --panel: #171d19;
-  --ink: #f0f0e7;
-  --muted: #abb4aa;
-  --accent: #c4ee8c;
-  --line: #333b33;
+  --bg: #ffffff;
+  --panel: #f3f7fc;
+  --ink: #123464;
+  --muted: #496486;
+  --accent: #175dcc;
+  --line: #d7e3f2;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
-  color-scheme: dark;
+  color-scheme: light;
   font-family: var(--font-sans);
   background: var(--bg);
   color: var(--ink);
@@ -102,7 +102,7 @@ h3 {
   position: sticky;
   top: 0;
   z-index: 20;
-  background: #101412ed;
+  background: #fffffff2;
   border-bottom: 1px solid var(--line);
   backdrop-filter: blur(16px);
 }
@@ -144,7 +144,7 @@ h3 {
   color: var(--accent);
 }
 .nav-contact {
-  border: 1px solid #707a67;
+  border: 1px solid #a8bfdd;
   padding: 11px 17px;
   border-radius: 3px;
   font-size: 12px;
@@ -181,7 +181,7 @@ h1 {
   border-radius: 50%;
   background: var(--accent);
   margin-right: 9px;
-  box-shadow: 0 0 15px #c4ee8c80;
+  box-shadow: 0 0 15px #175dcc50;
 }
 .actions {
   display: flex;
@@ -199,7 +199,7 @@ h1 {
 }
 .button:hover {
   transform: translateY(-3px);
-  background: #ddffb7;
+  background: #114aa6;
 }
 .primary {
   background: var(--accent);
@@ -207,7 +207,7 @@ h1 {
 }
 .text-link {
   font-size: 13px;
-  border-bottom: 1px solid #69755e;
+  border-bottom: 1px solid #8daed6;
   padding-bottom: 6px;
   transition: color 0.2s;
 }
@@ -218,7 +218,7 @@ h1 {
   display: flex;
   align-items: center;
   margin-bottom: 95px;
-  background: radial-gradient(ellipse, #23301a50, transparent 67%);
+  background: radial-gradient(ellipse, #dceaff80, transparent 67%);
 }
 .network-stage {
   width: 100%;
@@ -233,13 +233,13 @@ h1 {
 .network-fallback {
   position: absolute;
   inset: 18%;
-  border: 1px solid #c4ee8c80;
+  border: 1px solid #175dcc50;
   border-radius: 50%;
 }
 .network-fallback i {
   position: absolute;
   inset: 0;
-  border: 1px solid #c4ee8c80;
+  border: 1px solid #175dcc50;
   border-radius: 50%;
   transform: rotateY(60deg);
 }
@@ -362,32 +362,32 @@ h1 {
 .technical-visual {
   position: relative;
   aspect-ratio: 3/2;
-  background: #18201b;
+  background: #f1f6fd;
   color: var(--accent);
   overflow: hidden;
 }
 .visual-adelphi {
-  background: #1a2426;
-  color: #9fced0;
+  background: #f1f7ff;
+  color: #1959a6;
 }
 .visual-cnpq {
-  background: #20251b;
-  color: #d3dd95;
+  background: #f3f7fd;
+  color: #175dcc;
 }
 .visual-professor {
-  background: #25221c;
-  color: #dbbb94;
+  background: #f5f8fd;
+  color: #245591;
 }
 .visual-ibge {
-  background: #1d222b;
-  color: #a9bddf;
+  background: #eef5fc;
+  color: #245b9e;
 }
 .visual-grid {
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(#ffffff06 1px, transparent 1px),
-    linear-gradient(90deg, #ffffff06 1px, transparent 1px);
+    linear-gradient(#175dcc08 1px, transparent 1px),
+    linear-gradient(90deg, #175dcc08 1px, transparent 1px);
   background-size: 32px 32px;
 }
 .schematic {
@@ -414,7 +414,7 @@ h1 {
   position: absolute;
   right: 20px;
   top: 20px;
-  border: 1px solid #ffffff40;
+  border: 1px solid #175dcc40;
   border-radius: 50%;
   width: 40px;
   height: 40px;
@@ -446,10 +446,10 @@ h1 {
   margin: 22px 0;
 }
 .tags li {
-  border: 1px solid #46503e;
+  border: 1px solid #c4d6ec;
   padding: 7px 10px;
   font-size: 11px;
-  color: #c9d0c3;
+  color: #345881;
   border-radius: 2px;
 }
 .asset-note {
@@ -485,7 +485,7 @@ h1 {
   font:
     14px ui-monospace,
     monospace;
-  color: #f0f0e7;
+  color: #123464;
 }
 .experience-copy h3 {
   font-size: clamp(27px, 3vw, 40px);
@@ -530,7 +530,7 @@ h1 {
 }
 .skill-cluster .tags li:hover {
   border-color: var(--accent);
-  background: #c4ee8c10;
+  background: #175dcc0a;
 }
 .contact {
   padding-top: 100px;

@@ -66,14 +66,14 @@
         height / 2,
         size * 1.45,
       );
-      glow.addColorStop(0, "#b9ed7020");
-      glow.addColorStop(1, "#b9ed7000");
+      glow.addColorStop(0, "#175dcc12");
+      glow.addColorStop(1, "#175dcc00");
       ctx.fillStyle = glow;
       ctx.fillRect(0, 0, width, height);
       for (const [i, j] of edges) {
         const a = projected[i],
           b = projected[j];
-        ctx.strokeStyle = `rgba(193,238,137,${0.12 + (a.z + b.z + 2) * 0.09})`;
+        ctx.strokeStyle = `rgba(23,93,204,${0.12 + (a.z + b.z + 2) * 0.09})`;
         ctx.lineWidth = 0.7;
         ctx.beginPath();
         ctx.moveTo(a.x, a.y);
@@ -81,12 +81,12 @@
         ctx.stroke();
       }
       for (const p of projected) {
-        ctx.fillStyle = `rgba(211,255,164,${0.3 + (p.z + 1) * 0.35})`;
+        ctx.fillStyle = `rgba(23,93,204,${0.3 + (p.z + 1) * 0.35})`;
         ctx.beginPath();
         ctx.arc(p.x, p.y, 1.1 + (p.z + 1) * 0.65, 0, Math.PI * 2);
         ctx.fill();
       }
-      ctx.strokeStyle = "#c8ef8c60";
+      ctx.strokeStyle = "#175dcc60";
       ctx.lineWidth = 0.6;
       ctx.beginPath();
       ctx.ellipse(

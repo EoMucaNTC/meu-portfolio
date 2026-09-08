@@ -239,7 +239,7 @@ html[data-motion-paused="true"] :is(.chart-line, .chalk-line) {
   font-size: clamp(15px, 1.7vw, 24px);
   font-weight: 500;
   letter-spacing: -0.04em;
-  color: #f0f0e7;
+  color: #123464;
   white-space: nowrap;
 }
 .finance-panel p {
@@ -258,19 +258,19 @@ html[data-motion-paused="true"] :is(.chart-line, .chalk-line) {
   font:
     10px ui-monospace,
     monospace;
-  fill: #bdc6b1;
+  fill: #496486;
 }
 .chart-axis {
-  stroke: #647057;
+  stroke: #6c87a8;
   fill: none;
 }
 .chart-zero {
-  stroke: #647057;
+  stroke: #6c87a8;
   stroke-dasharray: 3 4;
   fill: none;
 }
 .chart-line {
-  stroke: #d3dd95;
+  stroke: #175dcc;
   stroke-width: 2;
   fill: none;
   stroke-dasharray: 1;
@@ -279,18 +279,18 @@ html[data-motion-paused="true"] :is(.chart-line, .chalk-line) {
   animation: chart-reveal 1.8s ease-out both;
 }
 .chart-marker {
-  fill: #edf9b6;
-  stroke: #20251b;
+  fill: #175dcc;
+  stroke: #f3f7fd;
   stroke-width: 1.5;
   animation: chart-point 3s ease-in-out infinite;
 }
 .financial-visual figcaption {
   font-size: 10px;
   line-height: 1.6;
-  color: #bec5b2;
+  color: #496486;
   margin-top: 20px;
   padding-top: 14px;
-  border-top: 1px solid #46503e;
+  border-top: 1px solid #c4d6ec;
 }
 .recruiter-focus {
   margin-top: 60px;
@@ -307,7 +307,7 @@ html[data-motion-paused="true"] :is(.chart-line, .chalk-line) {
   margin-top: 30px;
 }
 .evidence-grid a {
-  border-top: 1px solid #56664b;
+  border-top: 1px solid #b3cae5;
   padding-top: 22px;
   transition: border-color 0.25s;
 }
@@ -372,7 +372,7 @@ html[data-motion-paused="true"] :is(.chart-line, .chalk-line) {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto auto 1fr;
     column-gap: 8px;
-    border-top: 1px solid #46503e;
+    border-top: 1px solid #c4d6ec;
     padding-top: 14px;
   }
   .finance-panel h4 {
