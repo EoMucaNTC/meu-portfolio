@@ -1,0 +1,147 @@
+---
+const traits = [
+  {
+    label: "01 / MOTIVAÇÃO",
+    title: "Energia para alcançar objetivos",
+    description:
+      "Forte orientação a metas, motivação interna e vontade de superar padrões de desempenho, com tendência a acompanhar as tarefas até a conclusão quando engajado.",
+  },
+  {
+    label: "02 / INTERAÇÃO",
+    title: "Facilidade para criar conexões",
+    description:
+      "Perfil sociável e extrovertido, com disposição para iniciar conversas e conhecer pessoas. Discussões abertas aparecem entre os contextos de trabalho mais confortáveis.",
+  },
+  {
+    label: "03 / APRENDIZADO",
+    title: "Curiosidade para experimentar",
+    description:
+      "Abertura a novas ideias, criatividade e interesse em experimentar soluções. Afinidade com atividades variadas e funções que oferecem espaço para aprender e evoluir.",
+  },
+  {
+    label: "04 / EQUILÍBRIO",
+    title: "Paciência diante dos desafios",
+    description:
+      "Tendência a lidar com obstáculos e contratempos com calma, contribuindo com estabilidade nas atividades em equipe mesmo diante de pressão.",
+  },
+];
+---
+
+<section class="workplace-insights" aria-labelledby="workplace-heading">
+  <div class="workplace-heading">
+    <div>
+      <p class="eyebrow">COMO TRABALHO</p>
+      <h3 id="workplace-heading">Motivação, curiosidade e conexão humana.</h3>
+    </div>
+    <p class="workplace-source">
+      Workplace Insights · Criteria Corp<br />
+      Avaliação de <time datetime="2026-08-24">24/08/2026</time>
+    </p>
+  </div>
+  <p class="workplace-intro muted">
+    Além da formação técnica, meu jeito de trabalhar também faz parte do que
+    levo para os projetos. A avaliação aponta as seguintes tendências do meu
+    perfil profissional:
+  </p>
+  <div class="workplace-traits">
+    {
+      traits.map((trait) => (
+        <article>
+          <p class="eyebrow">{trait.label}</p>
+          <h4>{trait.title}</h4>
+          <p class="muted">{trait.description}</p>
+        </article>
+      ))
+    }
+  </div>
+  <p class="workplace-development">
+    <strong>Desenvolvimento contínuo.</strong> O relatório também sugere equilibrar
+    a busca por resultados com a escuta, a cooperação e o senso de urgência de cada
+    situação.
+  </p>
+  <p class="workplace-note muted">
+    Síntese dos resultados individuais para autoconhecimento; não é uma
+    certificação de competências nem uma garantia de desempenho.
+  </p>
+</section>
+
+<style>
+  .workplace-insights {
+    margin-top: 60px;
+    padding: 32px;
+    border: 1px solid var(--line);
+    background: var(--panel);
+    border-radius: 4px;
+  }
+  .workplace-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    gap: 28px;
+  }
+  .workplace-heading .eyebrow {
+    margin-bottom: 12px;
+  }
+  .workplace-heading h3 {
+    max-width: 620px;
+    font-size: clamp(25px, 3vw, 36px);
+  }
+  .workplace-source {
+    flex-shrink: 0;
+    font-size: 11px;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+  .workplace-intro {
+    max-width: 760px;
+    margin-top: 22px;
+    font-size: 14px;
+  }
+  .workplace-traits {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px 40px;
+    margin-top: 28px;
+  }
+  .workplace-traits article {
+    border-top: 1px solid var(--line);
+    padding-top: 20px;
+  }
+  .workplace-traits .eyebrow {
+    margin-bottom: 12px;
+    font-size: 9px;
+  }
+  .workplace-traits h4 {
+    margin: 0 0 12px;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: -0.025em;
+  }
+  .workplace-traits .muted {
+    font-size: 13px;
+  }
+  .workplace-development {
+    border-top: 1px solid var(--line);
+    padding-top: 22px;
+    margin-top: 28px;
+    font-size: 13px;
+  }
+  .workplace-note {
+    margin-top: 14px;
+    font-size: 11px;
+  }
+  @media (max-width: 700px) {
+    .workplace-insights {
+      margin-top: 40px;
+      padding: 24px 20px;
+    }
+    .workplace-heading {
+      flex-direction: column;
+      gap: 16px;
+    }
+    .workplace-traits {
+      grid-template-columns: 1fr;
+      gap: 22px;
+    }
+  }
+</style>
