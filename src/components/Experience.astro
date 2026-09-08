@@ -1,60 +1,136 @@
 ---
 const experiences = [
   {
+    id: "spirit",
     role: "Vice-Capitão & Diretor de Engenharia",
     company: "Equipe Spirit Robótica",
     period: "Jul 2023 - Presente",
-    description: "Membro fundador. Lidero desde o planejamento à execução de projetos reais de robótica. Atuação na transformação de conceitos em sistemas integrados, gestão de engenharia, além de coordenar orçamentos e a equipe técnica."
+    description: "Membro fundador. Lidero desde o planejamento à execução de projetos reais de robótica. Atuação na transformação de conceitos em sistemas integrados, gestão de engenharia, além de coordenar orçamentos e a equipe técnica.",
+    image: "/images/spirit.jpg",
+    imageAlt: "Equipe Spirit Robótica"
   },
   {
+    id: "cnpq",
     role: "Pesquisador IC (Bolsista CNPq)",
     company: "Center for Advanced and Sustainable Technologies (UNESP)",
     period: "Set 2024 - Presente",
-    description: "Pesquisa em viabilidade econômica de plantas de reciclagem de baterias Íon-Lítio. Modelagem financeira e estudo de sensibilidade por meio de simulações de Monte Carlo (VPL, TIR, Payback)."
+    description: "Pesquisa em viabilidade econômica de plantas de reciclagem de baterias Íon-Lítio. Modelagem financeira e estudo de sensibilidade por meio de simulações de Monte Carlo (VPL, TIR, Payback).",
+    image: "/images/cnpq.jpg",
+    imageAlt: "Pesquisa CNPq"
   },
   {
+    id: "adelphi",
     role: "Membro de Eletrônica e Sistemas Embarcados",
     company: "Adelphi AeroDesign Team",
     period: "Abr 2023 - Set 2024",
-    description: "Elaboração de projetos elétricos e eletrônicos para aeromodelos (Projeto Hórus). Atuação com sistemas de controle eletrônico, desenvolvimento embarcado e resolução de problemas práticos de engenharia."
+    description: "Elaboração de projetos elétricos e eletrônicos para aeromodelos (Projeto Hórus). Atuação com sistemas de controle eletrônico, desenvolvimento embarcado e resolução de problemas práticos de engenharia.",
+    image: "/images/adelphi.jpg",
+    imageAlt: "Adelphi AeroDesign Team"
   },
   {
+    id: "professor",
     role: "Professor Voluntário & Representante de Turma",
     company: "UNESP SJBV",
     period: "Mar 2023 - Nov 2025",
-    description: "Aulas de Álgebra II no Cursinho Popular Sanjoanense, apoiando estudantes em vulnerabilidade social. Como representante discente, atuei na comunicação entre alunos, professores e coordenação."
+    description: "Aulas de Álgebra II no Cursinho Popular Sanjoanense, apoiando estudantes em vulnerabilidade social. Como representante discente, atuei na comunicação entre alunos, professores e coordenação.",
+    image: "/images/professor.jpg",
+    imageAlt: "Professor Voluntário"
   },
   {
+    id: "ibge",
     role: "Agente Supervisor (Censo 2022)",
     company: "IBGE",
     period: "Jun 2022 - Mar 2023",
-    description: "Coordenação de equipes de recenseadores em campo na maior operação estatística do país. Responsável pelo cumprimento de prazos, controle de qualidade dos dados coletados e gestão de pessoas."
+    description: "Coordenação de equipes de recenseadores em campo na maior operação estatística do país. Responsável pelo cumprimento de prazos, controle de qualidade dos dados coletados e gestão de pessoas.",
+    image: "/images/ibge.jpg",
+    imageAlt: "IBGE Censo 2022"
   }
 ];
 ---
-<section id="experiencia" class="py-20">
+<section id="experiencia" class="py-20 relative overflow-hidden">
   <div class="max-w-5xl mx-auto px-6">
-    <h2 class="text-3xl font-bold text-slate-900 mb-12">Trajetória e Experiência</h2>
+    <h2 class="text-3xl font-bold text-slate-900 mb-4 scroll-reveal">Trajetória e Experiência</h2>
+    <p class="text-slate-500 mb-14 scroll-reveal">Clique em um card para ver mais detalhes sobre cada experiência.</p>
     
-    <div class="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-slate-300 before:to-transparent">
-      
-      {experiences.map((exp) => (
-        <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
-          <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-slate-50 bg-blue-100 text-blue-600 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
-            <svg class="w-4 h-4 fill-current" viewBox="0 0 16 16"><path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0Zm0 12a4 4 0 1 1 0-8 4 4 0 0 1 0 8Z"/></svg>
-          </div>
-          <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-6 rounded-2xl bg-white shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
-            <div class="flex flex-col mb-2">
-              <span class="text-blue-600 font-bold text-xs tracking-wider uppercase mb-1">{exp.period}</span>
-              <h3 class="text-xl font-bold text-slate-900 leading-snug">{exp.role}</h3>
-              <span class="text-slate-500 font-medium text-sm mt-1">{exp.company}</span>
-            </div>
-            <p class="text-slate-600 leading-relaxed mt-3 text-sm md:text-base">{exp.description}</p>
-          </div>
-        </div>
-      ))}
+    <div class="space-y-16">
+      {experiences.map((exp, index) => (
+        <a href={`#detail-${exp.id}`} class="block group scroll-reveal" style={`--reveal-delay: ${index * 0.1}s`}>
+          <div class={`flex flex-col ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} gap-6 md:gap-10 items-center`}>
 
+            {/* Imagem / Placeholder */}
+            <div class="w-full md:w-2/5 shrink-0 overflow-hidden rounded-2xl shadow-md group-hover:shadow-xl transition-all duration-500">
+              <div class="relative aspect-video bg-gradient-to-br from-blue-100 to-emerald-50 overflow-hidden">
+                <!-- Placeholder: substitua o src pela imagem real quando disponível -->
+                <img
+                  src={exp.image}
+                  alt={exp.imageAlt}
+                  class="w-full h-full object-cover opacity-0 transition-opacity duration-300"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                  onload="this.style.opacity='1';"
+                />
+                <!-- Fallback visual quando a imagem não existe -->
+                <div class="absolute inset-0 flex flex-col items-center justify-center text-blue-400/60" style="display: none;">
+                  <svg class="w-12 h-12 mb-2" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909M3.75 21h16.5A2.25 2.25 0 0 0 22.5 18.75V5.25A2.25 2.25 0 0 0 20.25 3H3.75A2.25 2.25 0 0 0 1.5 5.25v13.5A2.25 2.25 0 0 0 3.75 21Z" /></svg>
+                  <span class="text-xs font-medium">Imagem em breve</span>
+                </div>
+                <!-- Hover overlay -->
+                <div class="absolute inset-0 bg-gradient-to-t from-blue-900/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              </div>
+            </div>
+
+            {/* Texto */}
+            <div class="w-full md:w-3/5">
+              <span class="text-blue-600 font-bold text-xs tracking-wider uppercase mb-2 block">{exp.period}</span>
+              <h3 class="text-2xl font-bold text-slate-900 leading-snug mb-1 group-hover:text-blue-700 transition-colors duration-300">{exp.role}</h3>
+              <span class="text-slate-500 font-medium text-sm">{exp.company}</span>
+              <p class="text-slate-600 leading-relaxed mt-4 text-base">{exp.description}</p>
+              <span class="inline-flex items-center gap-1 mt-4 text-blue-600 font-semibold text-sm group-hover:gap-2 transition-all duration-300">
+                Ver detalhes
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" /></svg>
+              </span>
+            </div>
+          </div>
+
+          {/* Linha divisória animada entre cards */}
+          <div class="mt-12 h-px bg-gradient-to-r from-transparent via-slate-300 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-700 origin-center"></div>
+        </a>
+      ))}
     </div>
   </div>
 </section>
 
+<style>
+  /* Scroll Reveal */
+  .scroll-reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    transition-delay: var(--reveal-delay, 0s);
+  }
+
+  .scroll-reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+
+<script>
+  // IntersectionObserver for scroll reveal animations
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+        }
+      });
+    },
+    {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px',
+    }
+  );
+
+  document.querySelectorAll('.scroll-reveal').forEach((el) => {
+    observer.observe(el);
+  });
+</script>
